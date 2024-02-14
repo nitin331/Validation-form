@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Multi Step Form</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body background="./4k-nature-moraine-lake-r66plwqa8m3z5reg (1).jpg">
+    <form id="myForm" action="#" method="post" autocomplete = "off">
+      
+
+      <div style="text-align:center;">
+        <span class="step" id = "step-1">1</span>
+        <span class="step" id = "step-2">2</span>
+        <span class="step" id = "step-3">3</span>
+        
+      </div>
+
+      <div class="tab" id = "tab-1">
+        <h1 align = center>Login</h1>
+        
+        <input type="email" id="email" placeholder="Email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+        <input type = "password" placeholder="Password" name="password" required >
+        
+        <div class="index-btn-wrapper">
+          <div class="index-btn" onclick="run(1, 2);">Next</div>
+        </div>
+      </div>
+
+      <div class="tab" id = "tab-2">
+        <h1 align = center>Personal Details</h1>
+        
+        <input type="text" placeholder="First Name" />
+        <input type="text" placeholder="Last Name" />
+        <input type="text" placeholder="Phone Number" />
+        <input type="text" placeholder="Age" />
+        <input type="text" placeholder="Address" />
+        <div class="index-btn-wrapper">
+          <div class="index-btn" onclick="run(2, 1);">Previous</div>
+          <div class="index-btn" onclick="run(2, 3);">Next</div>
+        </div>
+      </div>
+
+      <div class="tab" id = "tab-3">
+        <h1 align = center>Education</h1>
+        <input type="text" placeholder="Enter Institution" />
+        <input type="text" placeholder="Enter HSC Percentage" />
+        <input type="text" placeholder="Enter Institution" />
+        <input type="text" placeholder="Enter SSC Percentage" />
+        <input type="text" placeholder="Enter Institution/College" />
+        <input type="text" placeholder="Enter Degree Percentage" />
+        <div class="index-btn-wrapper">
+          <div class="index-btn" onclick="run(3, 2);">Previous</div>
+          <div class="index-btn" onclick="run(3, 4);">Submitt</div>
+        </div>
+      </div>
+
+      
+    </form>
+
+    <script>
+      // Default tab
+      $(".tab").css("display", "none");
+      $("#tab-1").css("display", "block");
+
+      function run(hideTab, showTab){
+        if(hideTab < showTab){ // If not press previous button
+          // Validation if press next button
+          var currentTab = 0;
+          x = $('#tab-'+hideTab);
+          y = $(x).find("input")
+          for (i = 0; i < y.length; i++){
+            if (y[i].value == ""){
+              $(y[i]).css("background", "#ffdddd");
+              return false;
+            }
+          }
+        }
+
+        // Progress bar
+        for (i = 1; i < showTab; i++){
+          $("#step-"+i).css("opacity", "1");
+        }
+
+        // Switch tab
+        $("#tab-"+hideTab).css("display", "none");
+        $("#tab-"+showTab).css("display", "block");
+        $("input").css("background", "#fff");
+      }
+      function validation() {
+      if (document.getElementById("emailinput").pattern != ".+@gmail.com") {
+    document.getElementById("message").innerHTML 
+    = "<em> Must be a gmail '@gmail.com' account </em>";
+    return false;}
+     else{
+    return true;}}
+    </script>
+  </body>
+</html>
