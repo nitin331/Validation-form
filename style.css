@@ -57,3 +57,17 @@
     display: inline-block;
     opacity: 0.25;
   }
+
+  /* Add this CSS code to your style.css file or include it in the head of your HTML file */
+
+.password-container {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
