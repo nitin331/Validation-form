@@ -46,17 +46,23 @@
         </div>
         <div class="tab" id="tab-3">
             <h1 align=center>Education</h1>
-            <input type="text" placeholder="Enter Institution" />
-            <input type="text" placeholder="Enter HSC Percentage" />
-            <input type="text" placeholder="Enter Institution" />
-            <input type="text" placeholder="Enter SSC Percentage" />
-            <input type="text" placeholder="Enter Institution/College" />
-            <input type="text" placeholder="Enter Degree Percentage" />
+            <input type="text" id="institution1" placeholder="Enter Institution" required />
+            <input type="text" id="hscPercentage" placeholder="Enter HSC Percentage" pattern="[0-9]+([.][0-9]+)?" required />
+            <span id="hscPercentageerror" style="color: red;"></span>
+            <input type="text" id="institution2" placeholder="Enter Institution" required />
+            <input type="text" id="sscPercentage" placeholder="Enter SSC Percentage" pattern="[0-9]+([.][0-9]+)?" required />
+            <span id="sscPercentageerror" style="color: red;"></span>
+            <input type="text" id="institution3" placeholder="Enter Institution/College" required />
+            <input type="text" id="degreePercentage" placeholder="Enter Degree Percentage" pattern="[0-9]+([.][0-9]+)?" required />
+            <span id="degreePercentageerroe" style="color: red;"></span>
+            <div class="error-container"></div>
             <div class="index-btn-wrapper">
                 <div class="index-btn" onclick="run(3, 2);">Previous</div>
                 <div class="index-btn" onclick="submitForm();">Submit</div>
             </div>
         </div>
+        
+        
     </form>
 
     <script src="./script.js"></script>
