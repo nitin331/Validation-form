@@ -43,7 +43,7 @@ function run(hideTab, showTab) {
 
 
     // Progress bar
-    for (i = 1; i < showTab; i++) {
+    for (i = 0; i < showTab; i++) {
         $("#step-" + i).css("opacity", "1");
     }
 
@@ -60,9 +60,75 @@ function validatePassword(password) {
 }
 
 function submitForm() {
-    // Additional validation or form submission logic can be added here
-    alert("Form submitted successfully!");
+    // Validation for Education tab
+    var institution1 = document.getElementById("institution1").value.trim();
+    var hscPercentage = document.getElementById("hscPercentage");
+    var institution2 = document.getElementById("institution2").value.trim();
+    var sscPercentage = document.getElementById("sscPercentage");
+    var institution3 = document.getElementById("institution3").value.trim();
+    var degreePercentage = document.getElementById("degreePercentage");
+
+    // Validate percentage values
+    if (!isValidPercentage(hscPercentage.value)) {
+        displayErrorMessage(hscPercentage, "Please enter a valid HSC percentage (0-100).");
+        return false;
+    }
+
+    if (!isValidPercentage(sscPercentage.value)) {
+        displayErrorMessage(sscPercentage, "Please enter a valid SSC percentage (0-100).");
+        return false;
+    }
+
+    if (!isValidPercentage(degreePercentage.value)) {
+        displayErrorMessage(degreePercentage, "Please enter a valid degree percentage (0-100).");
+        return false;
+    }
+
+    // Clear error messages if validation passes
+    clearErrorMessages();
+
+    if (institution1 === "" || institution2 === "" || institution3 === "") {
+        alert("Please fill in all the Education details.");
+        return false;
+    }
+
+    // Other form submission logic (if needed)
+
+    // If all validations pass, you can submit the form or perform other actions
+    document.getElementById("myForm").submit();
 }
+
+// Function to validate percentage values
+function isValidPercentage(percentage) {
+    var numericValue = parseFloat(percentage);
+    return !isNaN(numericValue) && numericValue >= 0 && numericValue <= 100;
+}
+
+// Function to display error message
+function displayErrorMessage(element, message) {
+    var errorMessageElement = document.createElement("span");
+    errorMessageElement.className = "error-message";
+    errorMessageElement.style.color = "red";
+    errorMessageElement.textContent = message;
+
+    // Insert error message after the input field
+    element.parentNode.insertBefore(errorMessageElement, element.nextSibling);
+}
+
+// Function to clear error messages
+function clearErrorMessages() {
+    var errorMessages = document.getElementsByClassName("error-message");
+    for (var i = 0; i < errorMessages.length; i++) {
+        errorMessages[i].parentNode.removeChild(errorMessages[i]);
+    }
+}
+
+
+// Add pattern attribute and required attribute to each input field in the Education tab
+
+
+// Add pattern attribute and required attribute to each input field in the Education tab
+
 
 function togglePasswordVisibility() {
     var passwordInput = $("#password");
